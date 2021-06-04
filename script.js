@@ -61,3 +61,17 @@ new Chart(myChart, {
    }
  });
 
+ var request = new XMLHttpRequest()
+
+// Open a new connection, using the GET request on the URL endpoint
+request.open('GET', 'localhost:8080/finances', true)
+
+request.onload = function () {
+  // Begin accessing JSON data here
+  var data = JSON.parse(this.response);
+  console.log(data);
+}
+
+// Send request
+request.send()
+
