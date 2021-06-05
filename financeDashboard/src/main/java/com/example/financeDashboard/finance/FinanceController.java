@@ -16,6 +16,7 @@ public class FinanceController {
     private FinanceRepository financeRepository;
 
     // Get Mappings
+    @CrossOrigin
     @GetMapping("/finances")
     public Iterable<Finance> getFinances(){
         return financeRepository.findAll();
@@ -35,7 +36,7 @@ public class FinanceController {
         }
         return financeByMonth;
     }
-
+    @CrossOrigin
     @GetMapping("/financeByYear")
     public List<Finance> getFinancesByYear(@RequestParam Integer year){
         Iterable<Finance> allFinance = financeRepository.findAll();
@@ -52,6 +53,7 @@ public class FinanceController {
     }
 
     // Post Mappings
+    @CrossOrigin
     @PostMapping("/addFinance")
     public @ResponseBody String addFinance(@RequestParam String date, @RequestParam Integer amount, @RequestParam String category) throws ParseException {
 
@@ -68,6 +70,7 @@ public class FinanceController {
     }
 
     // Delete Mappings
+    @CrossOrigin
     @DeleteMapping("deleteFinance")
     public @ResponseBody String deleteFinance(@RequestParam Integer id){
         financeRepository.deleteById(id);
